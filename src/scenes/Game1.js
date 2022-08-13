@@ -115,21 +115,17 @@ export default class Game1 extends Phaser.Scene {
         // ======= Adicionando colisão entre os objetos =======
 
         bichinho.setOnCollideWith(plataform, pair => {
-            console.log("Perdeu");
-            this.enableClick();
-            this.scene.launch('gameOver', '1');
-            this.scene.pause('game1');
+            this.gameOver();
         });
     }
 
 
     update(){
-        //console.log(bichinho.body.angularSpeed);
         if(countBlocks == 0 && bichinho.body.angularSpeed < 0.0002){
-            console.log("Ganhou");
-            this.enableClick();
-            this.scene.launch('winner', '1');
-            this.scene.pause('game1');
+            this.gameWin();
+        }
+        if(!this.checkOutOfBounds){
+            this.gameOver();
         }
     };
 
@@ -143,5 +139,27 @@ export default class Game1 extends Phaser.Scene {
     
     enableClick(){
         this.input.mouse.enabled = true;
+    }
+
+    checkOutOfBounds(){
+        if(bichinho.x < 0){
+            return true;
+        }
+        if(bichinho.x > this.scale.width){
+            return true;
+        }
+        return false;
+    }
+
+    gameOver(){
+        this.enableClick();
+        this.scene.launch('gameOver', '1');
+        this.scene.pause('game1');
+    }
+
+    gameWin(){
+        this.enableClick();
+        this.scene.launch('winner', '1');
+        this.scene.pause('game1');
     }
 }

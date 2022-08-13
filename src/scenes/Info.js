@@ -10,7 +10,8 @@ export default class Info extends Phaser.Scene {
 
     preload() {
         this.load.image('background', 'src/sprites/images/Background1.png');
-        this.load.image('quit', './src/sprites/images/Quit.png')
+        this.load.image('quit', './src/sprites/images/Quit.png');
+        this.load.image('info', './src/sprites/images/InfoBox.png')
     }
 
     create() {
@@ -21,10 +22,10 @@ export default class Info extends Phaser.Scene {
         this.add.image(width/2, height/2 - 100, 'background').setScale(1.10);
         
         // ======= Botão de sair =======
-        const quitButtom = this.add.image(80,30, 'quit').setScale(0.2).setInteractive();
+        const quitButtom = this.add.image(110,40, 'quit').setScale(0.2).setInteractive();
         quitButtom.on('pointerover', () => {
-            quitButtom.setScale(0.225);
-            quitButtom.setTint(0x00FF00)
+            quitButtom.setScale(0.22);
+            quitButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         quitButtom.on('pointerout', () => {
@@ -45,13 +46,7 @@ export default class Info extends Phaser.Scene {
 
         },500);
 
-        // var titleStyle = { font: "bold 40px Arial", fill: "#000", boundsAlignH: "center", boundsAlignV: "middle" };
-        // var rulesStyle = { font: "bold 30px Arial", fill: "#000", boundsAlignH: "center", boundsAlignV: "middle" };
-
-        this.add.text(width/2 - 100, height/2 - 300, 'Instruções',{fontSize: '40px', fill: '#000'});
-        this.add.text(width/2 - 70, height/2 - 220, 'Shalalala', {fontSize: '30px', fill: '#000'});
-
-        //title.setTextBounds(0, 100, 800, 100);
+        const infoBox = this.add.image(width/2, height/2, 'info').setScale(0.5);
 
     }
 

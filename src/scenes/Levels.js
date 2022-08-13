@@ -12,7 +12,7 @@ export default class Levels extends Phaser.Scene {
     preload() {
 
         this.load.image('background', 'src/sprites/images/Background1.png');
-        this.load.image('quit', './src/sprites/images/Quit.png')
+        this.load.image('inicio', './src/sprites/images/Inicio.png')
 
         this.load.image('levelOne', './src/sprites/images/1.png');
         this.load.image('levelTwo', './src/sprites/images/2.png');
@@ -30,10 +30,10 @@ export default class Levels extends Phaser.Scene {
         this.add.image(width/2, height/2 - 100, 'background').setScale(1.10);
 
         // ======= Botão de sair =======
-        const quitButtom = this.add.image(80,30, 'quit').setScale(0.2).setInteractive();
+        const quitButtom = this.add.image(100,40, 'inicio').setScale(0.2).setInteractive();
         quitButtom.on('pointerover', () => {
-            quitButtom.setScale(0.225);
-            quitButtom.setTint(0x00FF00)
+            quitButtom.setScale(0.22);
+            quitButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         quitButtom.on('pointerout', () => {
@@ -49,7 +49,7 @@ export default class Levels extends Phaser.Scene {
         const levelOneButtom = this.add.image(width/2 - 200, height/2, 'levelOne').setScale(0.5).setInteractive();
         levelOneButtom.on('pointerover', () => {
             levelOneButtom.setScale(0.55);
-            levelOneButtom.setTint(0x00FF00)
+            levelOneButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         levelOneButtom.on('pointerout', () => {
@@ -64,7 +64,7 @@ export default class Levels extends Phaser.Scene {
         const levelTwoButtom = this.add.image(width/2 - 100, height/2, 'levelTwo').setScale(0.5).setInteractive();
         levelTwoButtom.on('pointerover', () => {
             levelTwoButtom.setScale(0.55);
-            levelTwoButtom.setTint(0x00FF00)
+            levelTwoButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         levelTwoButtom.on('pointerout', () => {
@@ -79,7 +79,7 @@ export default class Levels extends Phaser.Scene {
         const levelThreeButtom = this.add.image(width/2, height/2, 'levelThree').setScale(0.5).setInteractive();
         levelThreeButtom.on('pointerover', () => {
             levelThreeButtom.setScale(0.55);
-            levelThreeButtom.setTint(0x00FF00)
+            levelThreeButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         levelThreeButtom.on('pointerout', () => {
@@ -94,7 +94,7 @@ export default class Levels extends Phaser.Scene {
         const levelFourButtom = this.add.image(width/2 + 100, height/2, 'levelFour').setScale(0.5).setInteractive();
         levelFourButtom.on('pointerover', () => {
             levelFourButtom.setScale(0.55);
-            levelFourButtom.setTint(0x00FF00)
+            levelFourButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         levelFourButtom.on('pointerout', () => {
@@ -109,7 +109,7 @@ export default class Levels extends Phaser.Scene {
         const levelFiveButtom = this.add.image(width/2 + 200, height/2, 'levelFive').setScale(0.5).setInteractive();
         levelFiveButtom.on('pointerover', () => {
             levelFiveButtom.setScale(0.55);
-            levelFiveButtom.setTint(0x00FF00)
+            levelFiveButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         levelFiveButtom.on('pointerout', () => {

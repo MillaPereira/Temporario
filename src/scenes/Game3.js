@@ -1,7 +1,9 @@
 import Phaser from '../lib/phaser.js'
 
-var blocoM1, blocoR1;
-
+var blocoM1, blocoM2, blocoM3, blocoM4, blocoM5, blocoM6, blocoM7;
+var blocoR1;
+var bichinho;
+var countBlocks;
 
 
 export default class Game3 extends Phaser.Scene {
@@ -19,6 +21,7 @@ export default class Game3 extends Phaser.Scene {
         this.load.image('background', 'src/sprites/images/Background1.png');
         this.load.image('pause', './src/sprites/images/Pause.png');
         this.load.image('plataform', './src/sprites/images/grass.png');
+        this.load.image('bichinho', './src/sprites/images/bichinho.png')
 
         // ======= Peças de madeira =======
         this.load.image('timber_1x1', './src/sprites/images/Formats/1x1_destroy.png');
@@ -33,12 +36,14 @@ export default class Game3 extends Phaser.Scene {
         this.load.image('rock_1x1', './src/sprites/images/Formats/1x1_solid.png');
         this.load.image('rock_1x2', './src/sprites/images/Formats/1x2_solid.png');
         this.load.image('rock_1x3', './src/sprites/images/Formats/1x3_solid.png');
-        this.load.image('rock_3x1', './src/sprites/images/Formats/2x1_solid.png');
-        this.load.image('rock_4x1', './src/sprites/images/Formats/3x1_solid.png');
+        this.load.image('rock_2x1', './src/sprites/images/Formats/2x1_solid.png');
+        this.load.image('rock_3x1', './src/sprites/images/Formats/3x1_solid.png');
 
     }
 
     create() {
+        countBlocks = 7;
+
         var mouseOver = false;
 
         const {width, height} = this.scale; 
@@ -46,46 +51,138 @@ export default class Game3 extends Phaser.Scene {
         this.add.image(width/2, height/2 - 100, 'background').setScale(1.10);
 
         // ======= Adicionando plataforma =======
-        //const plataform = this.physics.add.staticImage(width/2, height, 'plataform');
-        //plataform.setImmovable(true);
-
         const plataform = this.matter.add.image(width/2, height, 'plataform', null, { isStatic: true });
 
         // ======= Botão de Pausa =======
-        const pauseButtom = this.add.image(30,30, 'pause').setScale(0.2).setInteractive();
+        const pauseButtom = this.add.image(30,30, 'pause').setScale(0.27).setInteractive();
         pauseButtom.on('pointerover', () => {
-            pauseButtom.setScale(0.225);
-            pauseButtom.setTint(0x00FF00)
+            pauseButtom.setScale(0.28);
+            pauseButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         pauseButtom.on('pointerout', () => {
-            pauseButtom.setScale(0.2);
+            pauseButtom.setScale(0.27);
             pauseButtom.setTint(0xffffff);
             mouseOver = false;
         });
         pauseButtom.on('pointerdown', () => {
-            this.scene.launch('pause');
+            this.scene.launch('pause', '3');
             this.scene.pause();
         });
 
         // // ======= Criando os blocos =======
-        blocoM1 = this.add.tileSprite(width/2, height/2, 0, 0, 'timber_1x2');
-        this.matter.add.gameObject(blocoM1).setFrictionAir(0.001).setBounce(0.2);
+        blocoM1 = this.add.tileSprite(width/2, height/2 + 240, 0, 0, 'timber_1x1');
+        this.matter.add.gameObject(blocoM1).setFrictionAir(0.002).setBounce(0.2).setInteractive();
+        blocoM1.on('pointerdown', () => {
+            blocoM1.destroy();
+            countBlocks--;
+            this.desableClick();
+        });
+        
 
-        blocoR1 = this.add.tileSprite(width/2, height/2 - 200, 0, 0, 'rock_4x1');
-        this.matter.add.gameObject(blocoR1).setFrictionAir(0.001).setBounce(0.2);
+        blocoM2 = this.add.tileSprite(width/2, height/2 + 200, 0, 0, 'timber_1x1');
+        this.matter.add.gameObject(blocoM2).setFrictionAir(0.002).setBounce(0.2).setInteractive();
+        blocoM2.on('pointerdown', () => {
+            blocoM2.destroy();
+            countBlocks--;
+            this.desableClick();
+        });
 
-        // // ======= Adicionando colisão entre os objetos =======
-        // this.physics.add.collider(blocoM1, plataform);
-        // this.physics.add.collider(blocoR1, plataform);
-        // this.physics.add.collider(blocoR1, blocoM1);
+        blocoM3 = this.add.tileSprite(width/2, height/2 + 160, 0, 0, 'timber_1x1');
+        this.matter.add.gameObject(blocoM3).setFrictionAir(0.002).setBounce(0.2).setInteractive();
+        blocoM3.on('pointerdown', () => {
+            blocoM3.destroy();
+            countBlocks--;
+            this.desableClick();
+        });
 
-        // this.game.physics.startSystem(Phaser.Physics.P2JS);
-		// this.game.physics.p2.setImpactEvents(true);
+        blocoM4 = this.add.tileSprite(width/2, height/2 + 120 , 0, 0, 'timber_1x1');
+        this.matter.add.gameObject(blocoM4).setFrictionAir(0.002).setBounce(0.2).setInteractive();
+        blocoM4.on('pointerdown', () => {
+            blocoM4.destroy();
+            countBlocks--;
+            this.desableClick();
+        });
+
+        blocoM5 = this.add.tileSprite(width/2, height/2 + 80 , 0, 0, 'timber_1x1');
+        this.matter.add.gameObject(blocoM5).setFrictionAir(0.002).setBounce(0.2).setInteractive();
+        blocoM5.on('pointerdown', () => {
+            blocoM5.destroy();
+            countBlocks--;
+            this.desableClick();
+        });
+
+        blocoM6 = this.add.tileSprite(width/2, height/2 + 0 , 0, 0, 'timber_1x1');
+        this.matter.add.gameObject(blocoM6).setFrictionAir(0.002).setBounce(0.2).setInteractive();
+        blocoM6.on('pointerdown', () => {
+            blocoM6.destroy();
+            countBlocks--;
+            this.desableClick();
+        });
+
+        blocoM7 = this.add.tileSprite(width/2, height/2 - 40 , 0, 0, 'timber_1x1');
+        this.matter.add.gameObject(blocoM7).setFrictionAir(0.002).setBounce(0.2).setInteractive();
+        blocoM7.on('pointerdown', () => {
+            blocoM7.destroy();
+            countBlocks--;
+            this.desableClick();
+        });
+
+        blocoR1 = this.add.tileSprite(width/2, height/2 + 40, 0, 0, 'rock_1x1');
+        this.matter.add.gameObject(blocoR1).setFrictionAir(0.002).setBounce(0.2).setInteractive();
+
+        // ======= Adicionando colisão entre os objetos =======
+
+        bichinho = this.add.tileSprite(width/2, height/2 - 300, 0, 0, 'bichinho');
+        this.matter.add.gameObject(bichinho).setFrictionAir(0.002).setBounce(0.2).setScale(0.14);
+        
+        // ======= Adicionando colisão entre os objetos =======
+
+        bichinho.setOnCollideWith(plataform, pair => {
+            this.gameOver();
+        });
     }
 
-
     update(){
-
+        if(countBlocks == 0 && bichinho.body.angularSpeed < 0.0002){
+            this.gameWin();
+        }
+        if(!this.checkOutOfBounds){
+            this.gameOver();
+        }
     };
+
+    desableClick(){
+        this.input.mouse.enabled = false;
+        this.time.addEvent({ delay: 800, 
+                                callback: () => {this.input.mouse.enabled = true}, 
+                                callbackScope: this, 
+                                loop: true});
+    }
+    
+    enableClick(){
+        this.input.mouse.enabled = true;
+    }
+
+    checkOutOfBounds(){
+        if(bichinho.x < 0){
+            return true;
+        }
+        if(bichinho.x > this.scale.width){
+            return true;
+        }
+        return false;
+    }
+
+    gameOver(){
+        this.enableClick();
+        this.scene.launch('gameOver', '1');
+        this.scene.pause('game3');
+    }
+
+    gameWin(){
+        this.enableClick();
+        this.scene.launch('winner', '1');
+        this.scene.pause('game3');
+    }
 }

@@ -18,9 +18,8 @@ new Phaser.Game({
     type: Phaser.AUTO,
     width: 650,
     height: 950,
-    scene: [Game1, Game2, Game3, Game4, Game5, Levels, Start, Info,  Pause, GameOver, Winner],
+    scene: [Start, Game1, Game2, Game3, Game4, Game5, Levels, Info,  Pause, GameOver, Winner],
     physics: {
-        //default: 'arcade',
         default: 'matter',
         arcade: {
             gravity: {

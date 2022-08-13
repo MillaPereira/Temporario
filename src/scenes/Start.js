@@ -27,7 +27,7 @@ export default class Start extends Phaser.Scene {
         const playButtom = this.add.image(width/2, height/2, 'play').setScale(0.35).setInteractive();
         playButtom.on('pointerover', () => {
             playButtom.setScale(0.4);
-            playButtom.setTint(0x00FF00)
+            playButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         playButtom.on('pointerout', () => {
@@ -40,14 +40,14 @@ export default class Start extends Phaser.Scene {
         });
         
         // ======= Botão de ajuda =======
-        const helpButtom = this.add.image(30,30, 'help').setScale(0.2).setInteractive();
+        const helpButtom = this.add.image(30,30, 'help').setScale(0.27).setInteractive();
         helpButtom.on('pointerover', () => {
-            helpButtom.setScale(0.225);
-            helpButtom.setTint(0x00FF00)
+            helpButtom.setScale(0.28);
+            helpButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         helpButtom.on('pointerout', () => {
-            helpButtom.setScale(0.2);
+            helpButtom.setScale(0.27);
             helpButtom.setTint(0xffffff);
             mouseOver = false;
         });
@@ -67,7 +67,7 @@ export default class Start extends Phaser.Scene {
         },500);
 
         // ======= Solzinho =======
-        var sun = this.add.image(width/2, height/2 + 100, 'sun').setScale(0.04);
+        var sun = this.add.image(width/2, height/2 + 120, 'sun').setScale(0.04);
 
         var angle = 0;
 

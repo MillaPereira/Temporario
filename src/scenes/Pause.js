@@ -30,7 +30,7 @@ export default class Pause extends Phaser.Scene {
         const quitButtom = this.add.image(width/2, height/2 - 100, 'quit').setScale(0.2).setInteractive();
         quitButtom.on('pointerover', () => {
             quitButtom.setScale(0.225);
-            quitButtom.setTint(0x00FF00)
+            quitButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         quitButtom.on('pointerout', () => {
@@ -39,15 +39,16 @@ export default class Pause extends Phaser.Scene {
             mouseOver = false;
         });
         quitButtom.on('pointerdown', () => {
+            this.scene.stop('game' + level);
             this.scene.start('start');
             this.scene.stop();
         });
 
-        // ======= Botão para returnar ao jogo =======
-        const playButtom = this.add.image(width/2, height/2 - 150, 'play').setScale(0.2).setInteractive();
+        // ======= Botão para retornar ao jogo =======
+        const playButtom = this.add.image(width/2, height/2 - 170, 'play').setScale(0.2).setInteractive();
         playButtom.on('pointerover', () => {
             playButtom.setScale(0.225);
-            playButtom.setTint(0x00FF00)
+            playButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         playButtom.on('pointerout', () => {

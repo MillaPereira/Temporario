@@ -13,8 +13,9 @@ export default class Winner extends Phaser.Scene {
     };
 
     preload() {
-        this.load.image('quit', './src/sprites/images/Quit.png')
-        this.load.image('play', './src/sprites/images/Play.png')
+        this.load.image('inicio', './src/sprites/images/Inicio.ng')
+        this.load.image('jogarNovamente', './src/sprites/images/JogarNovamente.png')
+        this.load.image('winner','../src/sprites/images/Winner.png')
     }
 
     create() {
@@ -25,10 +26,10 @@ export default class Winner extends Phaser.Scene {
         this.add.image(width/2, height/2 - 100, 'background').setScale(1.10).setAlpha(0.5);
 
         // ======= Botão de sair =======
-        const quitButtom = this.add.image(width/2, height/2 - 100, 'quit').setScale(0.2).setInteractive();
+        const quitButtom = this.add.image(width/2, height/2 - 70, 'inicio').setScale(0.2).setInteractive();
         quitButtom.on('pointerover', () => {
             quitButtom.setScale(0.225);
-            quitButtom.setTint(0x00FF00)
+            quitButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         quitButtom.on('pointerout', () => {
@@ -37,15 +38,15 @@ export default class Winner extends Phaser.Scene {
             mouseOver = false;
         });
         quitButtom.on('pointerdown', () => {
-            this.scene.start('levels');
+            this.scene.start('start');
             this.scene.stop('game' + level);
         });
 
-        // ======= Botão para returnar ao jogo =======
-        const playButtom = this.add.image(width/2, height/2 - 150, 'play').setScale(0.2).setInteractive();
+        // ======= Botão para jogar novamente =======
+        const playButtom = this.add.image(width/2, height/2 , 'jogarNovamente').setScale(0.2).setInteractive();
         playButtom.on('pointerover', () => {
             playButtom.setScale(0.225);
-            playButtom.setTint(0x00FF00)
+            playButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         playButtom.on('pointerout', () => {
@@ -54,9 +55,13 @@ export default class Winner extends Phaser.Scene {
             mouseOver = false;
         });
         playButtom.on('pointerdown', () => {
-            this.scene.resume('game1');
+            this.scene.stop('game' + level);
+            this.scene.start('game' + level);
             this.scene.stop();
         });
+
+        // ======= Winner =======
+        this.add.image(width/2, height/2 - 170, 'winner').setScale(0.5);
     }
 
     update(){
