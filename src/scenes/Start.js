@@ -2,12 +2,14 @@ import Phaser from '../lib/phaser.js'
 
 export default class Start extends Phaser.Scene {
 
+    // Costrução da cena
     constructor() {
         super('start');
     }
 
     init(){};
 
+    // Adiciona imagens da cena
     preload() {
         this.load.image('background', 'src/sprites/images/Background1.png');
         this.load.image('play', './src/sprites/images/Play.png')
@@ -16,27 +18,28 @@ export default class Start extends Phaser.Scene {
         this.load.image('titulo', './src/sprites/images/Titulo.png')    
     }
 
+    // Adiciona elementos da cena
     create() {
         var mouseOver = false;
 
-        const {width, height} = this.scale; 
-
-        this.add.image(width/2, height/2 - 100, 'background').setScale(1.10);
+        const {width, height} = this.scale; // pega o tamanho da tela
+ 
+        this.add.image(width/2, height/2 - 100, 'background').setScale(1.10); // adiciona a imagem de fundo
 
         // ======= Botão de Play =======
         const playButtom = this.add.image(width/2, height/2, 'play').setScale(0.35).setInteractive();
-        playButtom.on('pointerover', () => {
+        playButtom.on('pointerover', () => { // quando o mouse estiver sobre o botão
             playButtom.setScale(0.4);
             playButtom.setTint(0x836FFF)
             mouseOver = true;
         });
-        playButtom.on('pointerout', () => {
+        playButtom.on('pointerout', () => { // quando o mouse sair do botão
             playButtom.setScale(0.35);
             playButtom.setTint(0xffffff);
             mouseOver = false;
         });
-        playButtom.on('pointerdown', () => {
-            this.scene.start('levels');
+        playButtom.on('pointerdown', () => { // quando o mouse clicar no botão
+            this.scene.start('levels'); // inicia a cena de levels
         });
         
         // ======= Botão de ajuda =======
@@ -52,10 +55,10 @@ export default class Start extends Phaser.Scene {
             mouseOver = false;
         });
         helpButtom.on('pointerdown', () => {
-            this.scene.start('info');
+            this.scene.start('info'); // inicia a cena de informações
         });
 
-        setInterval(()=>{
+        setInterval(()=>{ // função para animação do botão de play
 
             if(mouseOver === false){
                 if(playButtom.scale == (0.4)) playButtom.setScale(0.35);
@@ -69,7 +72,7 @@ export default class Start extends Phaser.Scene {
 
         var angle = 0;
 
-        setInterval(()=>{
+        setInterval(()=> { // função para animação do solzinho
             angle += 0.26;
             sun.setRotation(angle);
 

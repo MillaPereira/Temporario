@@ -8,14 +8,15 @@ var countBlocks;
 
 export default class Game2 extends Phaser.Scene {
 
+    // Construindo a cena
     constructor() {
         super('game2');
     }
 
+    // Função de início do jogo
     init(){};
 
-    
-
+    // Adiciona imagens da cena
     preload() {
 
         this.load.image('background', 'src/sprites/images/Background1.png');
@@ -41,45 +42,45 @@ export default class Game2 extends Phaser.Scene {
 
     }
 
+    // Adiciona elementos da cena
     create() {
-        countBlocks = 4;
+        countBlocks = 4; // variável com a quantidade de blocos da tela 
 
         var mouseOver = false;
 
-        const {width, height} = this.scale; 
+        const {width, height} = this.scale; // pega o tamanho da tela
 
-        this.add.image(width/2, height/2 - 100, 'background').setScale(1.10);
+        this.add.image(width/2, height/2 - 100, 'background').setScale(1.10); // adiciona a imagem de fundo
 
         // ======= Adicionando plataforma =======
         const plataform = this.matter.add.image(width/2, height, 'plataform', null, { isStatic: true });
 
         // ======= Botão de Pausa =======
         const pauseButtom = this.add.image(30,30, 'pause').setScale(0.27).setInteractive();
-        pauseButtom.on('pointerover', () => {
+        pauseButtom.on('pointerover', () => { // quando o mouse estiver sobre o botão
             pauseButtom.setScale(0.28);
             pauseButtom.setTint(0x836FFF)
             mouseOver = true;
         });
-        pauseButtom.on('pointerout', () => {
+        pauseButtom.on('pointerout', () => { // quando o mouse sair do botão
             pauseButtom.setScale(0.27);
             pauseButtom.setTint(0xffffff);
             mouseOver = false;
         });
-        pauseButtom.on('pointerdown', () => {
-            this.scene.launch('pause', '2');
+        pauseButtom.on('pointerdown', () => { // quando o mouse clicar no botão
+            this.scene.launch('pause', '2'); // chama a cena de pause
             this.scene.pause();
         });
 
-        // // ======= Criando os blocos =======
-        blocoM1 = this.add.tileSprite(width/2 - 100, height/2 + 240, 0, 0, 'timber_1x1');
-        this.matter.add.gameObject(blocoM1).setFrictionAir(0.002).setBounce(0.2).setInteractive();
-        blocoM1.on('pointerdown', () => {
+        // ======= Criando os blocos =======
+        blocoM1 = this.add.tileSprite(width/2 - 100, height/2 + 240, 0, 0, 'timber_1x1'); // adiciona o primeiro bloco
+        this.matter.add.gameObject(blocoM1).setFrictionAir(0.002).setBounce(0.2).setInteractive(); // adiciona física ao bloco
+        blocoM1.on('pointerdown', () => { // quando o mouse clicar no bloco
             blocoM1.destroy();
-            countBlocks--;
-            this.desableClick();
+            countBlocks--;       // diminui o contador de blocos
+            this.desableClick(); // desabilita o clique do mouse
         });
         
-
         blocoM2 = this.add.tileSprite(width/2 + 100, height/2 + 240, 0, 0, 'timber_1x1');
         this.matter.add.gameObject(blocoM2).setFrictionAir(0.002).setBounce(0.2).setInteractive();
         blocoM2.on('pointerdown', () => {
@@ -107,28 +108,31 @@ export default class Game2 extends Phaser.Scene {
         blocoR1 = this.add.tileSprite(width/2, height/2 + 150, 0, 0, 'rock_3x1');
         this.matter.add.gameObject(blocoR1).setFrictionAir(0.002).setBounce(0.2).setInteractive();
 
-        // ======= Adicionando colisão entre os objetos =======
+        // ======= Adicionando o bichinho =======
 
         bichinho = this.add.tileSprite(width/2, height/2 - 150, 0, 0, 'bichinho');
         this.matter.add.gameObject(bichinho).setFrictionAir(0.002).setBounce(0.2).setScale(0.14);
         
-        // ======= Adicionando colisão entre os objetos =======
+        // ======= Adicionando evento de colisão entre os objetos =======
 
         bichinho.setOnCollideWith(plataform, pair => {
             this.gameOver();
         });
     }
 
-
+    // Verifica se o jogador ganhou ou perdeu 
     update(){
+        // se os blocos acabarem e o bichinho não tocar o chão
         if(countBlocks == 0 && bichinho.body.angularSpeed < 0.0002){
             this.gameWin();
         }
-        if(!this.checkOutOfBounds){
+        // checa se o bichinho saiu da tela
+        if(!this.checkOutOfBounds){ 
             this.gameOver();
         }
     };
 
+    // Função que desabilita o clique do mouse por um tempo
     desableClick(){
         this.input.mouse.enabled = false;
         this.time.addEvent({ delay: 800, 
@@ -137,10 +141,12 @@ export default class Game2 extends Phaser.Scene {
                                 loop: true});
     }
     
+    // Função que habilita o clique do mouse
     enableClick(){
         this.input.mouse.enabled = true;
     }
 
+    // Função que verifica se o bichinho saiu da tela
     checkOutOfBounds(){
         if(bichinho.x < 0){
             return true;
@@ -151,12 +157,14 @@ export default class Game2 extends Phaser.Scene {
         return false;
     }
 
+    // Função de game over
     gameOver(){
         this.enableClick();
         this.scene.launch('gameOver', '2');
         this.scene.pause('game2');
     }
 
+    // Função de vitória
     gameWin(){
         this.enableClick();
         this.scene.launch('winner', '2');

@@ -14,13 +14,14 @@ import GameOver from './scenes/GameOver.js'
 import Levels from './scenes/Levels.js'
 import Winner from './scenes/Winner.js'
 
+// Definindo a classe Game
 new Phaser.Game({
     type: Phaser.AUTO,
     width: 650,
     height: 950,
-    scene: [Start, Game1, Game2, Game3, Game4, Game5, Levels, Info,  Pause, GameOver, Winner],
+    scene: [Start, Game1, Game2, Game3, Game4, Game5, Levels, Info,  Pause, GameOver, Winner], 
     physics: {
-        default: 'matter',
+        default: 'matter', // física do jogo
         arcade: {
             gravity: {
                 y: 1000

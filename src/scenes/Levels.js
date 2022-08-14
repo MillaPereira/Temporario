@@ -1,16 +1,16 @@
 import Phaser from '../lib/phaser.js'
 
-
 export default class Levels extends Phaser.Scene {
 
+    // Construção da cena
     constructor() {
         super('levels');
     }
 
     init(){};
 
+    // Adiciona imagens da cena
     preload() {
-
         this.load.image('background', 'src/sprites/images/Background1.png');
         this.load.image('inicio', './src/sprites/images/Inicio.png')
 
@@ -19,30 +19,30 @@ export default class Levels extends Phaser.Scene {
         this.load.image('levelThree', './src/sprites/images/3.png');
         this.load.image('levelFour', './src/sprites/images/4.png');
         this.load.image('levelFive', './src/sprites/images/5.png');
-
     }
 
+    // Adiciona elementos da cena
     create() {
         var mouseOver = false;
 
-        const {width, height} = this.scale; 
+        const {width, height} = this.scale; // pega o tamanho da tela
 
-        this.add.image(width/2, height/2 - 100, 'background').setScale(1.10);
+        this.add.image(width/2, height/2 - 100, 'background').setScale(1.10); // adiciona a imagem de fundo
 
         // ======= Botão de sair =======
         const quitButtom = this.add.image(100,40, 'inicio').setScale(0.2).setInteractive();
-        quitButtom.on('pointerover', () => {
+        quitButtom.on('pointerover', () => {  // quando o mouse estiver sobre o botão
             quitButtom.setScale(0.22);
             quitButtom.setTint(0x836FFF)
             mouseOver = true;
         });
-        quitButtom.on('pointerout', () => {
+        quitButtom.on('pointerout', () => { // quando o mouse sair do botão
             quitButtom.setScale(0.2);
             quitButtom.setTint(0xffffff);
             mouseOver = false;
         });
-        quitButtom.on('pointerdown', () => {
-            this.scene.start('start');
+        quitButtom.on('pointerdown', () => { // quando o mouse clicar no botão
+            this.scene.start('start'); // inicia a cena de inicio
         });
 
         // ======= Botões de nível =======
@@ -58,7 +58,7 @@ export default class Levels extends Phaser.Scene {
             mouseOver = false;
         });
         levelOneButtom.on('pointerdown', () => {
-            this.scene.start('game1');
+            this.scene.start('game1'); // inicia a cena do nível 1
         });
 
         const levelTwoButtom = this.add.image(width/2 - 100, height/2, 'levelTwo').setScale(0.5).setInteractive();
@@ -73,7 +73,7 @@ export default class Levels extends Phaser.Scene {
             mouseOver = false;
         });
         levelTwoButtom.on('pointerdown', () => {
-            this.scene.start('game2');
+            this.scene.start('game2'); // inicia a cena do nível 2
         })
 
         const levelThreeButtom = this.add.image(width/2, height/2, 'levelThree').setScale(0.5).setInteractive();
@@ -88,7 +88,7 @@ export default class Levels extends Phaser.Scene {
             mouseOver = false;
         });
         levelThreeButtom.on('pointerdown', () => {
-            this.scene.start('game3');
+            this.scene.start('game3'); // inicia a cena do nível 3
         })
 
         const levelFourButtom = this.add.image(width/2 + 100, height/2, 'levelFour').setScale(0.5).setInteractive();
@@ -103,7 +103,7 @@ export default class Levels extends Phaser.Scene {
             mouseOver = false;
         });
         levelFourButtom.on('pointerdown', () => {
-            this.scene.start('game4');
+            this.scene.start('game4'); // inicia a cena do nível 4
         })
 
         const levelFiveButtom = this.add.image(width/2 + 200, height/2, 'levelFive').setScale(0.5).setInteractive();
@@ -118,7 +118,7 @@ export default class Levels extends Phaser.Scene {
             mouseOver = false;
         });
         levelFiveButtom.on('pointerdown', () => {
-            this.scene.start('game5');
+            this.scene.start('game5'); // inicia a cena do nível 5
         })
     }
 
