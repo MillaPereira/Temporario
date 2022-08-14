@@ -13,7 +13,7 @@ export default class Start extends Phaser.Scene {
         this.load.image('play', './src/sprites/images/Play.png')
         this.load.image('help', './src/sprites/images/Help.png');
         this.load.image('sun', './src/sprites/images/Sol.png')
-        
+        this.load.image('titulo', './src/sprites/images/Titulo.png')    
     }
 
     create() {
@@ -55,8 +55,6 @@ export default class Start extends Phaser.Scene {
             this.scene.start('info');
         });
 
-        this.add.text(150,height/2 - 120, 'Tiramisu de camarão', {fontSize: '32px', fill: '#000'});
-
         setInterval(()=>{
 
             if(mouseOver === false){
@@ -76,6 +74,9 @@ export default class Start extends Phaser.Scene {
             sun.setRotation(angle);
 
         },75);
+
+        // ======= Titulo =======
+        this.add.image(width/2, height/2 - 140, 'titulo').setScale(0.5);
     }
 
 
@@ -83,8 +84,3 @@ export default class Start extends Phaser.Scene {
         
     };
 }
-
-// Rotação: https://phaser.io/examples/v2/sprites/sprite-rotation
-// Jogo exemplo: http://www.davidbrind.co.uk/toemv1.0/index.html
-// https://itch.io/games/free/genre-platformer
-// Jogo do João: https://github.com/vortex2jm/Dino_Run_Game

@@ -14,8 +14,6 @@ export default class Game5 extends Phaser.Scene {
 
     init(){};
 
-    
-
     preload() {
 
         this.load.image('background', 'src/sprites/images/Background1.png');
@@ -71,7 +69,7 @@ export default class Game5 extends Phaser.Scene {
         });
 
         // // ======= Criando os blocos =======
-        blocoM1 = this.add.tileSprite(width/2 - 100, height/2 + 240, 0, 0, 'timber_1x2');
+        blocoM1 = this.add.tileSprite(width/2 - 100, height/2, 0, 0, 'timber_1x1');
         this.matter.add.gameObject(blocoM1).setFrictionAir(0.002).setBounce(0.2).setInteractive();
         blocoM1.on('pointerdown', () => {
             blocoM1.destroy();
@@ -80,7 +78,7 @@ export default class Game5 extends Phaser.Scene {
         });
         
 
-        blocoM2 = this.add.tileSprite(width/2 + 100, height/2 + 240, 0, 0, 'timber_1x2');
+        blocoM2 = this.add.tileSprite(width/2 + 100, height/2, 0, 0, 'timber_1x1');
         this.matter.add.gameObject(blocoM2).setFrictionAir(0.002).setBounce(0.2).setInteractive();
         blocoM2.on('pointerdown', () => {
             blocoM2.destroy();
@@ -88,7 +86,7 @@ export default class Game5 extends Phaser.Scene {
             this.desableClick();
         });
 
-        blocoM3 = this.add.tileSprite(width/2, height/2 , 0, 0, 'timber_1x2');
+        blocoM3 = this.add.tileSprite(width/2, height/2  + 240, 0, 0, 'timber_1x4');
         this.matter.add.gameObject(blocoM3).setFrictionAir(0.002).setBounce(0.2).setInteractive();
         blocoM3.on('pointerdown', () => {
             blocoM3.destroy();

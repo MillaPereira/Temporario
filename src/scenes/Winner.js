@@ -9,10 +9,10 @@ export default class Winner extends Phaser.Scene {
     }
 
     init(data){
-        level = data;
+        level = data
     };
 
-    preload() {
+    preload() { 
         this.load.image('inicio', './src/sprites/images/Inicio.ng')
         this.load.image('jogarNovamente', './src/sprites/images/JogarNovamente.png')
         this.load.image('winner','../src/sprites/images/Winner.png')
@@ -21,7 +21,7 @@ export default class Winner extends Phaser.Scene {
     create() {
         var mouseOver = false;
 
-        const {width, height} = this.scale; 
+        const {width, height} = this.scale; // pega o tamanho da tela
 
         this.add.image(width/2, height/2 - 100, 'background').setScale(1.10).setAlpha(0.5);
 

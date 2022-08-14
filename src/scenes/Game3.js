@@ -176,13 +176,13 @@ export default class Game3 extends Phaser.Scene {
 
     gameOver(){
         this.enableClick();
-        this.scene.launch('gameOver', '1');
+        this.scene.launch('gameOver', '3');
         this.scene.pause('game3');
     }
 
     gameWin(){
         this.enableClick();
-        this.scene.launch('winner', '1');
+        this.scene.launch('winner', '3');
         this.scene.pause('game3');
     }
 }
