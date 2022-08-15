@@ -1,5 +1,5 @@
 # Tiramisu de Camarão
-Jogo exemplo: http://www.davidbrind.co.uk/toemv1.0/index.html
+Link para acessar o jogo: https://game-java-script-three.vercel.app/
 
 # Como rodar o jogo no seu navegador
 
@@ -12,6 +12,6 @@ Caso o node não esteja instalado, use o comando abaixo para fazer a instalaçã
 
 sudo apt-get install nodejs
 
-Agora basta abrir o arquivo index.html em seu navegador para poder ver o jogo.
+Agora basta abrir o arquivo index.html co  o live server em seu navegador para poder ver o jogo.
 
 OBS: Usar o google chrome
