@@ -110,7 +110,8 @@ export default class Gamea extends Phaser.Scene {
     // Verifica se o jogador ganhou ou perdeu
     update(){
         // se os blocos acabarem e o bichinho não tocar o chão
-        if(countBlocks == 0 && bichinho.body.velocity.y < 0.02 && bichinho.body.position.y > 770){
+        console.log(bichinho.body.position.y);
+        if(countBlocks == 0 && bichinho.body.velocity.y < 0.02 && bichinho.body.position.y > 580){
             this.gameWin();
         }
         // checa se o bichinho saiu da tela
