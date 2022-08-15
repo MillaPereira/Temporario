@@ -111,7 +111,7 @@ export default class Game2 extends Phaser.Scene {
         // ======= Adicionando o bichinho =======
 
         bichinho = this.add.tileSprite(width/2, height/2 - 150, 0, 0, 'bichinho');
-        this.matter.add.gameObject(bichinho).setFrictionAir(0.002).setBounce(0.2).setScale(0.14);
+        this.matter.add.gameObject(bichinho).setFrictionAir(0.002).setBounce(0.2).setScale(0.2);
         
         // ======= Adicionando evento de colisão entre os objetos =======
 
@@ -123,7 +123,7 @@ export default class Game2 extends Phaser.Scene {
     // Verifica se o jogador ganhou ou perdeu 
     update(){
         // se os blocos acabarem e o bichinho não tocar o chão
-        if(countBlocks == 0 && bichinho.body.angularSpeed < 0.0002){
+        if(countBlocks == 0 && bichinho.body.velocity.y < 0.02 && bichinho.body.position.y > 770){
             this.gameWin();
         }
         // checa se o bichinho saiu da tela
