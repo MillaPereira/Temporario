@@ -1,6 +1,4 @@
 # Tiramisu de Camarão
- - Link para acessar o jogo na web
-<link>
 Jogo exemplo: http://www.davidbrind.co.uk/toemv1.0/index.html
 
 # Como rodar o jogo no seu navegador

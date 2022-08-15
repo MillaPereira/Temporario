@@ -120,7 +120,7 @@ export default class Game5 extends Phaser.Scene {
     // Verifica se o jogador ganhou ou perdeu
     update(){
         // se os blocos acabarem e o bichinho não tocar o chão
-        if(countBlocks == 0 && bichinho.body.velocity.y < 0.02 && bichinho.body.position.y > 770){
+        if(countBlocks == 0 && bichinho.body.velocity.y < 0.0002 && bichinho.body.position.y > 770){
             this.gameWin();
         }
         // checa se o bichinho saiu da tela

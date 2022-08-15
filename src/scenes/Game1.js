@@ -57,7 +57,7 @@ export default class Game1 extends Phaser.Scene {
         const pauseButtom = this.add.image(30,30, 'pause').setScale(0.27).setInteractive();
         pauseButtom.on('pointerover', () => { // Ao passar o mouse sobre o botão
             pauseButtom.setScale(0.28);
-            pauseButtom.setTint(0x00FF00)
+            pauseButtom.setTint(0x836FFF)
             mouseOver = true;
         });
         pauseButtom.on('pointerout', () => { // Ao tirar o mouse do botão
@@ -122,7 +122,7 @@ export default class Game1 extends Phaser.Scene {
     // Verifica se o jogador ganhou ou perdeu 
     update(){
         // se os blocos acabarem e o bichinho não tocar o chão
-        if(countBlocks == 0 && bichinho.body.velocity.y < 0.02 && bichinho.body.position.y > 770){
+        if(countBlocks == 0 && bichinho.body.velocity.y < 0.0002 && bichinho.body.position.y > 770){
             this.gameWin();
         }
         // checa se o bichinho saiu da tela
